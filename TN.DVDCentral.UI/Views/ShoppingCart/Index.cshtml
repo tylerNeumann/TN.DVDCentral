@@ -1,0 +1,65 @@
+﻿@model TN.DVDCentral.BL.Models.ShoppingCart
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table m-2">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Cost)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Items[0].InStkQty)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].ImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.InStkQty)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                    @Html.ActionLink("Remove", "Remove", new { id=item.Id })
+                    
+            </td>
+        </tr>
+}
+
+        
+    </tbody>
+    <div>
+    <tfoot>
+        <tr><a class=" btn btn-sm btn-primary" asp-route-id="cart.id" asp-action="AssignToCustomer" Text="Check Out"> Checkout </a></tr>
+    </tfoot>
+    </div>
+    
+    
+</table>

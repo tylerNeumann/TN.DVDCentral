@@ -1,0 +1,13 @@
+﻿global using WebAPIToken.Controllers.entities;
+global using WebAPIToken.Controllers.models;
+global using WebAPIToken.Controllers.helpers;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using WebAPIToken.Controllers.services;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Microsoft.Extensions.Options;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;

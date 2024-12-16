@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TN.DVDCentral.BL.Models.Movie>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="m-2">
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card mb-2">
+                <div class="card-header">
+                    <h5> @Html.DisplayNameFor(model => model.Title) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.Title) </h5>
+                </div>
+
+                <div class="card-body">
+                    <h5> <img src="~/images/@item.ImagePath" id="movieImage" onclick="on('/images/@item.ImagePath')" class="imagePropSmall" alt="@item.Title" /> </h5>
+
+                    <h5> @Html.DisplayNameFor(model => model.Description) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.Description) </h5>
+
+                    <h5> @Html.DisplayNameFor(model => model.FormatDescription) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.FormatDescription) </h5>
+
+                    @* <h5> @Html.DisplayNameFor(model => model.DirectorName) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.DirectorName) </h5> *@
+
+                    <h5> @Html.DisplayNameFor(model => model.RatingDescription) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.RatingDescription) </h5>
+
+                    @* <h3> @Html.DisplayNameFor(model => model.GenreDescription) </h3>
+                    <h3> @Html.DisplayFor(modelItem => item.GenreDescription) </h3> *@
+
+                    <h5> @Html.DisplayNameFor(model => model.Cost) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.Cost) </h5>
+@* 
+                    <h5> @Html.DisplayNameFor(model => model.InStkQty) </h5>
+                    <h5> @Html.DisplayFor(modelItem => item.InStkQty) </h5> *@
+                </div>
+
+                <div class="card-footer">
+                     <h5>
+                        <a class="btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Edit">Edit</a>
+                        <a class="btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Details">Details</a>
+                        <a class="btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                        @* <a class="btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Add" asp-controller="ShoppingCart">+</a> *@
+                        <input class="btn-sm btn-primary" type="button" onclick="AddToCart(@item.Id)" value="Add to Cart">
+                     </h5>
+                </div>
+            </div>
+        </div>      
+    }
+</div>
